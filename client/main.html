@@ -1,0 +1,95 @@
+<head>
+  <title>FOX Gif Maker</title>
+  <!-- Viewport Meta Tag -->
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css" type="text/html">
+    <link rel="stylesheet" href="bootstrap.css" type="text/html">
+</head>
+<body>
+
+<!-- fixed ui area -->
+<nav class="fixed-title text-center" role="navigation">
+
+  <div class="pull-left mt-15 interval-div">
+    <span class="pull-left interval-text">Interval</span>
+    <input class="pull-left form-control interval-input"
+           name="interval"
+           id="interval"
+           value="100"
+           step="100"
+           size="5"
+           type="number" />
+    <div class="pull-left input-group-addon interval-label">ms</div>
+  </div>
+
+  <span class="pull-left options-button-group">
+    <a href="#" type="button" id="clear" class="btn btn-large btn-primary" role="button">Clear Collection</a>
+    {{> create }}
+    <a href="#" type="button" id="save-gif" class="btn btn-large btn-default save-gif-button hidden" role="button" download="cool-gif-image.gif">Download GIF</a>
+  </span>
+</nav>
+
+<!-- image display area  -->
+<section class="demo-section v-center">
+  <div>
+    <div class="row">
+
+      <div class="col-md-6 text-center image-selection">
+
+        <section>
+          <h4 class="mt-15">Select Image File</h4>
+
+          <div id="status">
+            Drag the files from a folder to the drop area
+          </div>
+
+          <div class="drop-zone" ondragover="{this.style.color = '#ff4e2a'}">
+            <span>Drag and drop here</span>
+          </div>
+
+          <div class="select-file">
+            Or
+            <input id="file-browse" type="file" name="userFile">
+          </div>
+
+          {{> counter}}
+
+          <!-- container for selected image list -->
+          <div id="list" class="file-list"></div>
+
+        </section>
+      </div>
+
+      <div class="col-md-6 text-center preview-section">
+
+        <h4 class="mt-15">
+          Preview
+        </h4>
+
+        <section class="gifmaker-image-preview-section">
+          <div id="display"></div>
+        </section>
+
+        <div class="placeholder-div hidden">
+          <span class="placeholder-div-dimensions"></span>
+        </div>
+
+        <progress max="1" value="0" class="gifshot-progress-bar hidden"></progress>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+
+<template name="create">
+  <a href="#" type="button" id="create-gif" class="btn btn-large btn-primary create-gif-button" role="button">Create GIF and Display</a>
+</template>
+
+<template name="counter">
+  <div>
+    <h5>{{count}} Selected Images</h5>
+  </div>
+</template>
